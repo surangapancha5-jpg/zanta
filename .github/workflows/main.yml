@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -33,13 +33,12 @@ jobs:
 
       - name: Install Capacitor
         run: |
-          npm install @capacitor/core@7 @capacitor/android@7 --legacy-peer-deps
-          npm install --save-dev @capacitor/cli@7 --legacy-peer-deps
+          npm install @capacitor/core@7 @capacitor/android@7 @capacitor/cli@7 --legacy-peer-deps
 
       - name: Build Game
         run: npm run build
 
-      - name: Configure Android
+      - name: Configure Capacitor
         run: |
           cat > capacitor.config.json <<'EOF'
           {
@@ -52,7 +51,7 @@ jobs:
       - name: Create Android Project
         run: npx cap add android
 
-      - name: Sync Game
+      - name: Sync Android
         run: npx cap sync android
 
       - name: Build APK
@@ -66,3 +65,4 @@ jobs:
         with:
           name: Supreme-Farm-APK
           path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
