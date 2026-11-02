@@ -1,0 +1,6 @@
+{
+  "name": "Govi Gamana: 3D Farm Empire & Rewards",
+  "description": "Immersive portrait farm simulator featuring 10 paddy fields, animal pens, market shop, assistants, fortune wheel, 3D interactive world, and live weather station.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
